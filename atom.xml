@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bigdongzai.github.io</id>
-    <title>XuanHuiDong的学习笔记</title>
-    <updated>2021-03-16T01:20:07.576Z</updated>
+    <title>XuanHuiDong学习记录</title>
+    <updated>2021-03-16T01:21:26.644Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://bigdongzai.github.io"/>
     <link rel="self" href="https://bigdongzai.github.io/atom.xml"/>
     <subtitle>人往高出走，而我是水！</subtitle>
     <logo>https://bigdongzai.github.io/images/avatar.png</logo>
     <icon>https://bigdongzai.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, XuanHuiDong的学习笔记</rights>
+    <rights>All rights reserved 2021, XuanHuiDong学习记录</rights>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>https://bigdongzai.github.io/post/hello-gridea/</id>
