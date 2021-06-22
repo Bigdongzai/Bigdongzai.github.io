@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bigdongzai.github.io</id>
     <title>XuanHuiDong学习记录</title>
-    <updated>2021-06-21T05:56:01.639Z</updated>
+    <updated>2021-06-22T01:14:53.832Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://bigdongzai.github.io"/>
     <link rel="self" href="https://bigdongzai.github.io/atom.xml"/>
@@ -10,4 +10,52 @@
     <logo>https://bigdongzai.github.io/images/avatar.png</logo>
     <icon>https://bigdongzai.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, XuanHuiDong学习记录</rights>
+    <entry>
+        <title type="html"><![CDATA[k8s-dashbaord-v2.3.1开发环境搭建]]></title>
+        <id>https://bigdongzai.github.io/k8s-dashbaord-v231-kai-fa-huan-jing-da-jian/</id>
+        <link href="https://bigdongzai.github.io/k8s-dashbaord-v231-kai-fa-huan-jing-da-jian/">
+        </link>
+        <updated>2021-06-22T00:58:45.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="入门指南">入门指南</h1>
+<p>本文档描述了如何设置开发环境。</p>
+<h2 id="环境准备">环境准备</h2>
+<p>确保安装了以下软件并将其添加到环境变量中:</p>
+<ul>
+<li>Curl 7+ (<a href="https://curl.se/docs/install.html">installation manual</a>)</li>
+<li>Git 2.13.2+ (<a href="https://git-scm.com/downloads">installation manual</a>)</li>
+<li>Docker 1.13.1+ (<a href="https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/">installation manual</a>)</li>
+<li>Golang 1.15+ (<a href="https://golang.org/dl/">installation manual</a>)
+<ul>
+<li>Dashboard使用<code>go mod</code>进行go依赖管理，所以运行<code>export GO111MODULE=on</code>来启用它 .</li>
+</ul>
+</li>
+<li>Node.js 14+ and npm 6+ (<a href="https://github.com/creationix/nvm#usage">installation with nvm</a>)</li>
+<li>Gulp.js 4+ (<a href="https://github.com/gulpjs/gulp/blob/master/docs/getting-started/1-quick-start.md">installation manual</a>)</li>
+</ul>
+<p>克隆仓库到 <code>$GOPATH/src/github.com/kubernetes/dashboard</code> 并安装依赖项:</p>
+<pre><code class="language-shell">npm ci
+</code></pre>
+<p>如果你使用root权限运行命令，设置 <code>--unsafe-perm flag</code>:</p>
+<pre><code class="language-shell">npm ci --unsafe-perm
+</code></pre>
+<h2 id="运行集群">运行集群</h2>
+<p>要让Dashboard工作，您需要让集群运行。如果您想使用本地集群，我们推荐 <a href="https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/">kubeadm</a>, <a href="https://kubernetes.io/docs/getting-started-guides/minikube/">minikube</a> 或 <a href="https://github.com/Mirantis/kubeadm-dind-cluster">kubeadm-dind-cluster</a>。 让它工作的最方便的方法是创建一个代理。执行如下命令:</p>
+<pre><code class="language-shell">kubectl proxy
+</code></pre>
+<p>kubectl将使用Kubernetes处理身份验证，并创建一个地址为 <code>localhost:8080</code> 的API代理. 因此，不需要修改配置。</p>
+<h2 id="开发dashboard服务">开发Dashboard服务</h2>
+<p>快速更新版本:</p>
+<pre><code class="language-shell">npm start
+</code></pre>
+<p>在开发Dashboard时，另一种连接到真实集群的方法是指定 <code>npm</code> 选项，如下所示:</p>
+<pre><code class="language-shell">npm run start:https --kubernetes-dashboard:kubeconfig=&lt;path to your kubeconfig&gt;
+</code></pre>
+<p>请参阅 <a href="https://github.com/kubernetes/dashboard/blob/master/.npmrc">这里</a> 得知有哪些选项可以指定使用 <code>npm</code>来运行Dashboard.</p>
+<p>打开浏览器并访问下面的UI <code>localhost:8080</code>.</p>
+<p>在后台， <code>npm start</code> 会 <a href="https://github.com/kimmobrunfeldt/concurrently#readme">并发</a> 调用来启动 <code>golang</code> 后台服务和 <code>angular</code> 管理服务。</p>
+<p>一旦angular服务器启动，它需要一些时间来预编译所有资源，然后再提供它们。默认情况下，angular开发服务器会监视文件的变化，并相应地进行更新。</p>
+<p>正如 <a href="https://angular.io/guide/i18n#generate-app-versions-for-each-locale">Angular documentation</a>所述, i18n不能在开发模式下工作。<br>
+遵循 <a href="#building-dashboard-for-production">Building Dashboard for Production</a> 小节来测试这个特性。</p>
+]]></content>
+    </entry>
 </feed>
